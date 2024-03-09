@@ -22,7 +22,11 @@ function initializeCards() {
   return shuffleArray([...animalEmojis, ...animalEmojis]);
 }
 
-const Index = ({ theme = "Animals", difficulty = "Easy" }) => {
+import { useLocation } from "react-router-dom";
+
+const Index = () => {
+  const location = useLocation();
+  const { theme, difficulty } = location.state || { theme: "Animals", difficulty: "Easy" };
   const gridSize = difficulty === "Easy" ? 2 : difficulty === "Medium" ? 4 : 6;
   const [cards, setCards] = useState(initializeCards());
   const [flippedIndices, setFlippedIndices] = useState([]);
