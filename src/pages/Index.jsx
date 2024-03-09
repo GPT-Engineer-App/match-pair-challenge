@@ -22,7 +22,8 @@ function initializeCards() {
   return shuffleArray([...animalEmojis, ...animalEmojis]);
 }
 
-const Index = () => {
+const Index = ({ theme = "Animals", difficulty = "Easy" }) => {
+  const gridSize = difficulty === "Easy" ? 2 : difficulty === "Medium" ? 4 : 6;
   const [cards, setCards] = useState(initializeCards());
   const [flippedIndices, setFlippedIndices] = useState([]);
   const [matchedIndices, setMatchedIndices] = useState([]);
